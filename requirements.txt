@@ -1,0 +1,38 @@
+# Web框架及相关依赖
+Flask
+                   # Web应用框架
+Flask-Cors               # 处理跨域资源共享
+Werkzeug                 # WSGI工具库，Flask的依赖项
+Jinja2                   # 模板引擎
+itsdangerous             # 安全相关的辅助工具
+click                    # 命令行工具
+
+# 数据库相关
+kaggle                  # 数据集来源
+SQLAlchemy              # ORM数据库工具
+PyMySQL                 # MySQL数据库驱动
+python-dotenv           # 环境变量管理
+
+# 工具库
+setuptools              # Python包安装工具
+wheel                  # 用于构建Python包
+six                    # Python 2和3兼容库
+colorama               # 终端颜色输出
+
+# 机器学习和数据处理
+numpy                   # 数值计算库
+pandas                  # 数据分析工具
+scikit-learn           # 机器学习工具库
+torch                   # PyTorch深度学习框架
+torchvision             # PyTorch计算机视觉工具
+Pillow                  # 图像处理库
+opencv-python           # OpenCV计算机视觉库
+albumentations          # 图像增强库
+
+# 数据可视化
+matplotlib              # 绘图库
+
+# 服务器部署
+gunicorn               # Python WSGI HTTP服务器
+greenlet               # Python协程库
+

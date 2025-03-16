@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于 - 智能垃圾分类系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="/">智能垃圾分类系统</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/about">关于</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="mb-0">关于项目</h4>
+                    </div>
+                    <div class="card-body">
+                        <h5>项目简介</h5>
+                        <p>本项目是一个基于深度学习的智能垃圾分类系统，旨在通过计算机视觉技术实现垃圾的自动分类。系统可以将垃圾图片自动分类为可回收物、有害垃圾、厨余垃圾和其他垃圾四大类，为垃圾分类和环境保护提供技术支持。</p>
+
+                        <h5 class="mt-4">技术特点</h5>
+                        <ul>
+                            <li>使用PyTorch深度学习框架</li>
+                            <li>采用预训练的EfficientNet-B0模型</li>
+                            <li>实现了数据增强和模型微调</li>
+                            <li>验证集准确率达到88%以上</li>
+                            <li>提供友好的Web交互界面</li>
+                        </ul>
+
+                        <h5 class="mt-4">作者信息</h5>
+                        <p>
+                            姓名：XXX<br>
+                            学校：XXX大学<br>
+                            专业：计算机科学与技术<br>
+                            指导教师：XXX教授
+                        </p>
+
+                        <h5 class="mt-4">项目源码</h5>
+                        <p>本项目已开源，源码地址：<a href="https://github.com/yourusername/SortWise" target="_blank">GitHub</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light text-center py-3 mt-5">
+        <p class="mb-0">© 2024 智能垃圾分类系统 - 毕业设计作品</p>
+    </footer>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

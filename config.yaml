@@ -1,0 +1,123 @@
+# 全局配置文件
+
+# 路径配置
+paths:
+  data:
+    train_dir: "data/train"    # 训练数据集目录
+    val_dir: "data/val"        # 验证数据集目录
+    test_dir: "data/test"      # 测试数据集目录
+  checkpoints: "checkpoints/models"  # 模型权重保存目录
+  logs:
+    training: "logs/training"   # 训练日志保存目录
+    app: "logs/app"            # 应用程序日志保存目录
+
+# 模型配置
+model:
+  name: "efficientnet_b0"      # 使用的模型架构名称
+  num_classes: 34              # 分类类别数量
+  pretrained: false            # 是否使用预训练权重
+  dropout_rate: 0.2           # Dropout比率，用于防止过拟合
+  image_size: 224             # 输入图片尺寸
+
+# 训练配置
+training:
+  batch_size: 32              # 每批次训练的样本数量
+  num_epochs: 10              # 总训练轮数
+  learning_rate: 0.001        # 学习率
+  weight_decay: 0.0001        # 权重衰减系数，用于L2正则化
+  optimizer:
+    type: "adam"              # 优化器类型（ada）
+    momentum: 0.9             # 动量因子（用于SGD优化器）
+  scheduler:
+    type: "cosine"            # 学习率调度器类型（余弦退火）
+    warmup_epochs: 5          # 预热训练的轮数
+  early_stopping:
+    patience: 5               # 早停轮数：验证集性能多少轮未提升时停止训练
+    min_delta: 0.001          # 性能提升的最小差值
+  num_workers: 2              # 数据加载的进程数
+  pin_memory: true            # 是否将数据加载到CUDA固定内存（用于加速GPU训练）
+
+# 数据处理配置
+data:
+  image_size: 224             # 图片处理后的尺寸
+  mean: [0.485, 0.456, 0.406] # 数据标准化的均值（ImageNet标准）
+  std: [0.229, 0.224, 0.225]  # 数据标准化的标准差（ImageNet标准）
+  augmentation:               # 数据增强配置
+    random_crop: true         # 是否使用随机裁剪
+    random_flip: true         # 是否使用随机翻转
+    random_rotation: 10       # 随机旋转的最大角度
+    color_jitter:            # 颜色增强参数
+      brightness: 0.2         # 亮度调整范围
+      contrast: 0.2          # 对比度调整范围
+      saturation: 0.2        # 饱和度调整范围
+      hue: 0.1               # 色调调整范围
+
+# 类别配置
+classes: [                    # 所有支持的垃圾分类类别
+    "XLight",                 # X光灯管
+    "bandaid",               # 创可贴
+    "battery",               # 电池
+    "bowlsanddishes",        # 碗碟
+    "bread",                 # 面包
+    "bulb",                  # 灯泡
+    "cans",                  # 易拉罐
+    "carton",                # 纸箱
+    "chopsticks",            # 筷子
+    "cigarettebutt",         # 烟头
+    "diapers",               # 尿布
+    "facialmask",            # 口罩
+    "glassbottle",           # 玻璃瓶
+    "leaflet",               # 传单
+    "leftovers",             # 剩饭剩菜
+    "medicinebottle",        # 药瓶
+    "milkbox",               # 牛奶盒
+    "nailpolishbottle",      # 指甲油瓶
+    "napkin",                # 餐巾纸
+    "newspaper",             # 报纸
+    "nut",                   # 坚果
+    "penholder",             # 笔筒
+    "pesticidebottle",       # 农药瓶
+    "plasticbag",            # 塑料袋
+    "plasticbottle",         # 塑料瓶
+    "plasticene",            # 橡皮泥
+    "rag",                   # 抹布
+    "tabletcapsule",         # 药片胶囊
+    "thermometer",           # 温度计
+    "toothbrush",            # 牙刷
+    "toothpastetube",        # 牙膏管
+    "toothpick",             # 牙签
+    "traditionalChinesemedicine", # 中药
+    "watermelonrind"         # 西瓜皮
+]
+
+# 应用程序配置
+app:
+  host: "0.0.0.0"            # 服务器主机地址
+  port: 5000                 # 服务器端口号
+  debug: false               # 是否启用调试模式
+  upload_folder: "app/static/uploads"  # 上传文件保存目录
+  allowed_extensions: ["jpg", "jpeg", "png"]  # 允许上传的文件类型
+  max_content_length: 16777216  # 最大上传文件大小（16MB）
+
+# 日志配置
+logging:
+  level: "INFO"              # 日志级别
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"  # 日志格式
+  date_format: "%Y-%m-%d %H:%M:%S"  # 日期格式
+  save_dir: "logs"           # 日志保存目录
+  log_interval: 10           # 日志记录间隔（批次）
+  save_interval: 5           # 日志保存间隔（轮数）
+  tensorboard: true          # 是否使用TensorBoard记录训练过程
+
+# 模型保存配置
+checkpoint:
+  save_dir: "checkpoints"    # 检查点保存目录
+  save_best: true           # 是否保存最佳模型
+  save_last: true           # 是否保存最新模型
+  save_interval: 5          # 检查点保存间隔（轮数）
+
+# 推理配置
+inference:
+  batch_size: 32            # 推理时的批次大小
+  tta: false                # 是否使用测试时增强（Test Time Augmentation）
+  threshold: 0.5            # 分类阈值 
